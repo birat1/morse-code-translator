@@ -1,0 +1,3 @@
+/user/HS400/ba01081/com1031-cw/build/pioasm/CMakeFiles/pioasm.dir
+/user/HS400/ba01081/com1031-cw/build/pioasm/CMakeFiles/edit_cache.dir
+/user/HS400/ba01081/com1031-cw/build/pioasm/CMakeFiles/rebuild_cache.dir
