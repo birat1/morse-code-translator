@@ -13,7 +13,7 @@
 #define BUTTON_PIN			16	// Pin 21 (GPIO 16)
 
 // declare global variables e.g., the time when the button is pressed 
-int pressed ;
+int pressDuration = 0;
 
 int BUTTON_BOUNDARY = 250;
 int INTER_SIGNAL_GAP = 400;
@@ -21,10 +21,6 @@ int INTER_SIGNAL_GAP = 400;
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
 // given the user input, you can decode if the input is a character
-void decoder();
-
-// check if the button press is a dot or a dash
-void checkButton();
 
 int main() {
 	stdio_init_all();
@@ -45,11 +41,14 @@ int main() {
 
 		while (gpio_get(BUTTON_PIN)){			
             // record how long the button is pressed
-            // .....
-			sleep_ms(150); // adjust the sleep_ms as required
-		} 
+			pressDuration += 50;
+			sleep_ms(50);
+		}
+
         // check if the button press is a dot or a dash
 		checkButton();
+
+		pressDuration = 0;
 	}
 }
 
@@ -58,6 +57,10 @@ void decoder(){
 }
 
 void checkButton(){
-    // a function to be implemented
+    if (pressDuration < BUTTON_BOUNDARY && pressDuration != 0) {
+		printf(".");
+	} else if (pressDuration > BUTTON_BOUNDARY && pressDuration != 0) {
+		printf("-");
+	}
 }
 
