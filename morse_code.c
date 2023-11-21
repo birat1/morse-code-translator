@@ -21,6 +21,10 @@ int INTER_SIGNAL_GAP = 400;
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
 // given the user input, you can decode if the input is a character
+void decoder();
+
+// check if the button press is a dot or a dash
+void checkButton();
 
 int main() {
 	stdio_init_all();
@@ -38,7 +42,6 @@ int main() {
 	gpio_pull_down(BUTTON_PIN); // Pull the button pin towards ground (with an internal pull-down resistor).
 
 	while (true) {
-
 		while (gpio_get(BUTTON_PIN)){			
             // record how long the button is pressed
 			pressDuration += 50;
@@ -48,19 +51,25 @@ int main() {
         // check if the button press is a dot or a dash
 		checkButton();
 
+		// once checked, reset duration back to 0
 		pressDuration = 0;
 	}
 }
 
 void decoder(){
-    // a function to be implemented
+	// todo: store dots & dash into an array, compare the array to their morse code equivalent and output the letter
 }
 
 void checkButton(){
+	// output dot if pressed < 250ms
+	// validation to prevent outputting if isn't pressed
     if (pressDuration < BUTTON_BOUNDARY && pressDuration != 0) {
 		printf(".");
-	} else if (pressDuration > BUTTON_BOUNDARY && pressDuration != 0) {
+	// output dash if pressed > 250ms
+	} else if (pressDuration > BUTTON_BOUNDARY) {
 		printf("-");
 	}
+	// todo: if button isn't pressed for 400ms, start outputting on a new line
+	
 }
 

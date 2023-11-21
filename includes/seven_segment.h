@@ -82,7 +82,7 @@ void seven_segment_init() {
     }  
 
     /* Display message in console and (-) */  
-    printf("Welcome to the Morse code Decoder!");
+    printf("Welcome to the Morse code Decoder!\n");
     seven_segment_show(0);
 }
 
