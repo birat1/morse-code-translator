@@ -42,9 +42,10 @@ int main() {
 	gpio_pull_down(BUTTON_PIN); // Pull the button pin towards ground (with an internal pull-down resistor).
 
 	while (true) {
-		while (gpio_get(BUTTON_PIN)){			
+		while (gpio_get(BUTTON_PIN)) {			
             // record how long the button is pressed
 			pressDuration += 50;
+			// printf("%d \n", pressDuration);
 			sleep_ms(50);
 		}
 
@@ -69,7 +70,7 @@ void checkButton(){
 	} else if (pressDuration > BUTTON_BOUNDARY) {
 		printf("-");
 	}
-	// todo: if button isn't pressed for 400ms, start outputting on a new line
-	
 }
+
+// todo: if button isn't pressed for 400ms, start outputting on a new line
 
