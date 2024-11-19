@@ -62,26 +62,6 @@ uint8_t values[] = {
     0b11011010,         // Z
 };
 
-
-/* Initialise the GPIO pins for the seven-segment display. */
-void seven_segment_init() {
-    for (unsigned int i = 0; i < ALL_SEGMENTS_COUNT; i++) {
-        gpio_init(ALL_SEGMENTS[i]);
-        gpio_set_dir(ALL_SEGMENTS[i], GPIO_OUT);
-    }  
-
-    /* Display message in console and (-)*/  
-    printf("Welcome to the Morse code Decoder!");
-    seven_segment_show(0);
-}
-
-/* Turn off the seven-segment display. */
-void seven_segment_off() {
-    for (unsigned int i = 0; i < ALL_SEGMENTS_COUNT; i++) {
-        gpio_put(ALL_SEGMENTS[i], true);
-    }
-}
-
 void seven_segment_show(unsigned int number) {
     for (unsigned int i = 0; i < 8; i++) {
         unsigned int segmentBit = 1 << (7 - i);
@@ -91,5 +71,24 @@ void seven_segment_show(unsigned int number) {
             ALL_SEGMENTS[i],
             !illuminateSegment
         );
+    }
+}
+
+/* Initialise the GPIO pins for the seven-segment display. */
+void seven_segment_init() {
+    for (unsigned int i = 0; i < ALL_SEGMENTS_COUNT; i++) {
+        gpio_init(ALL_SEGMENTS[i]);
+        gpio_set_dir(ALL_SEGMENTS[i], GPIO_OUT);
+    }  
+
+    /* Display message in console and (-) */  
+    printf("Welcome to the Morse code Decoder!\n");
+    seven_segment_show(0);
+}
+
+/* Turn off the seven-segment display. */
+void seven_segment_off() {
+    for (unsigned int i = 0; i < ALL_SEGMENTS_COUNT; i++) {
+        gpio_put(ALL_SEGMENTS[i], true);
     }
 }
