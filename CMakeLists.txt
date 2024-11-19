@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-include(pico_sdk_import.cmake)
-
-set(CMAKE_C_COMPILER "/Applications/ArmGNUToolchain/13.2.Rel1/arm-none-eabi")
-
+include("$ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake")
 project(week06 C CXX ASM)
 
 pico_sdk_init()

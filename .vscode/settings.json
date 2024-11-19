@@ -12,7 +12,6 @@
     }
   },
   "cmake.buildBeforeRun": true,
-  "cmake.environment": { "PICO_SDK_PATH": "/Users/birat/rpi_pico/pico-sdk" },
   "cmake.showSystemKits": false,
   "C_Cpp.debugShortcut": false,
   "memory-view.showMemoryPanel": false,
